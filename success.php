@@ -1,10 +1,10 @@
 <html>
 <head>
 <title>Success</title>
-<link rel="stylesheet" type="text/css" href="https://www4042.ssldomain.com/fightfistula/WPEmbedded/styles.css" media="screen" />
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-Thank you for your donation to One By One.  You will recieve a receipt to the e-mail that you provided.
+Thank you for your donation.  You will recieve a receipt to the e-mail that you provided.
 <br/><br/>
 If you need to reference this transaction, please use tracking code #
 <?php

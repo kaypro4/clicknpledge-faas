@@ -26,7 +26,7 @@ require_once('inc/config.inc');
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Donate to City Fruit</title>
+	<title>Donate</title>
 	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/css/bootstrapValidator.min.css"/>
 
@@ -45,6 +45,7 @@ require_once('inc/config.inc');
 				<div class="col-md-2">  
 				<input id="UnitPrice1" name="UnitPrice1" type="text" placeholder="$" class="form-control input-md" value="<?php if(isset($_GET['test'])) {echo '1.00';}?>">
 		  		<input name="ItemID1" type="hidden" id="ItemID1" value="1" />
+		  		<input name="SKU1" type="hidden" id="SKU1" value="Donation" />
 		  		<input name="ItemName1" type="hidden" id="ItemName1" value="Donation" />
 		  		<input name="Quantity1" type="hidden" id="Quantity1" value="1" />
 		 		<input name="UnitDeductible1" type="hidden" id="UnitDeductible1" value="100%" />
@@ -140,7 +141,7 @@ require_once('inc/config.inc');
 		  	
 			<div class="form-group">
 			    <div class="col-sm-8">
-			      <textarea rows="4" class="form-control" placeholder="Comments" id="FieldName10" name="FieldName10"> <?php if(isset($_GET['test'])) {echo 'Sample comment';}?></textarea>
+			      <textarea rows="4" class="form-control" placeholder="Comments" id="FieldValue10" name="FieldValue10"> <?php if(isset($_GET['test'])) {echo 'Sample comment';}?></textarea>
 			      <input name="FieldName10" type="hidden" value="Comments"/>
 			    </div>
 			  </div>
@@ -181,14 +182,14 @@ require_once('inc/config.inc');
 					<option value="09">Sep (09)</option>
 					<option value="10">Oct (10)</option>
 					<option value="11">Nov (11)</option>
-					<option value="12">Dec (12)</option>
+					<option value="12" <?php if(isset($_GET['test'])) {echo 'selected';}?>>Dec (12)</option>
 				    </select>
 				    </div>
 				    <div class="col-sm-4">
 
 				      <select class="form-control" name="ExpirationYear" id="ExpirationYear">
 					<?PHP
-					$year = date("Y") - 1; 
+					$year = date("Y"); 
 					for ($i = 0; $i <= 8; $i++) 
 					{
 					$year++; 
@@ -212,20 +213,20 @@ require_once('inc/config.inc');
 		  	
 		  	
 		  	<div class="checkbox">
-			  <label><input type="checkbox" value="1" onclick="showPanel(this,'Match')" name="FieldName2" id="FieldName2">My employer will match my gift</label>
-			  <input name="FieldName2" type="hidden" value="CompanyMatch"/>
+			  <label><input type="checkbox" value="1" onclick="showPanel(this,'Match')" name="FieldValue2" id="FieldValue2">My employer will match my gift</label>
+			  <input name="FieldName2" type="hidden" value="Employer_Match__c"/>
 			</div>
 		  	
 		  	<div class="form-group" style="display:none;" id="Match">
 				<div class="col-sm-8">
-			 	 <input type="text" class="form-control" name="FieldName1" id="FieldName1" placeholder="Employer name">
-			 	 <input name="FieldName1" type="hidden" value="Company"/>
+			 	 <input type="text" class="form-control" name="FieldValue1" id="FieldValue1" placeholder="Employer name">
+			 	 <input name="FieldName1" type="hidden" value="Employer__c"/>
 				</div>
 		        </div>
 		        
 		        <div class="checkbox">
-			  <label><input type="checkbox" value="1" onclick="showPanel(this,'Dedication')" id="FieldName3" name="FieldName3" >Dedicate my donation in honor or memory of someone special.</label>
-			  <input name="FieldName3" type="hidden" value="isDedication"/>
+			  <label><input type="checkbox" value="1" onclick="showPanel(this,'Dedication')" id="FieldValue3" name="FieldValue3" >Dedicate my donation in honor or memory of someone special.</label>
+			  <input name="FieldName3" type="hidden" value="Is_Dedication__c"/>
 			</div>
 		  	
 		  	<div style="display:none;" id="Dedication">
@@ -233,13 +234,13 @@ require_once('inc/config.inc');
 			  	<div class="form-group">
 				<div class="col-md-11 col-md-offset-1">
 				    <label class="radio" for="radios-0">
-				      <input type="radio" name="FieldName4" id="FieldName4-0" value="honor" checked="checked">
+				      <input type="radio" name="FieldValue4" id="FieldName4-0" value="Honor" checked="checked">
 				      In honor of...
 				    </label> 
 				    
 				    <label class="radio" for="radios-1">
-				      <input type="radio" name="FieldName4" id="FieldName4-1" value="memory">
-				      <input name="FieldName4" type="hidden" value="Dedication"/>
+				      <input type="radio" name="FieldValue4" id="FieldName4-1" value="Memory">
+				      <input name="FieldName4" type="hidden" value="Dedication_Type__c"/>
 				      In memory of...
 				    </label> 
 				</div>
@@ -247,21 +248,21 @@ require_once('inc/config.inc');
 			  	
 			  	<div class="form-group">
 					<div class="col-sm-8">
-				 	 <input type="text" class="form-control" name="FieldName5" id="FieldName5" placeholder="Name">
-				 	 <input name="FieldName5" type="hidden" value="DedicationName"/>
+				 	 <input type="text" class="form-control" name="FieldValue5" id="FieldValue5" placeholder="Name">
+				 	 <input name="FieldName5" type="hidden" value="Dedication_Name__c"/>
 					</div>
 				</div>
 				
 				<div class="form-group">
 				  
 				    <div class="col-sm-8">
-				    <select class="form-control" name="FieldName6" id="FieldName6">
-					<option value="none" name="none">Notify by</option>
-					<option value="none" name="none">Do not notify</option>
-					<option value="email" name="email">Send an E-mail</option>
-					<option value="letter" name="letter">Send a Letter</option>
+				    <select class="form-control" name="FieldValue6" id="FieldValue6">
+					<option value="None" name="None">Notify by</option>
+					<option value="None" name="None">Do not notify</option>
+					<option value="Email" name="Email">Send an E-mail</option>
+					<option value="Letter" name="Letter">Send a Letter</option>
 				      </select>
-				      <input name="FieldName6" type="hidden" value="DedicationNotifyMethod"/>
+				      <input name="FieldName6" type="hidden" value="Dedication_Notify_Method__c"/>
 				    </div>
 				
 			    </div>
@@ -269,8 +270,8 @@ require_once('inc/config.inc');
 			    <div style="display:none;" id="DedicationEmail">
 					<div class="form-group">
 						<div class="col-sm-8">
-					 	 <input type="text" class="form-control" name="FieldName7" id="FieldName7" placeholder="Notification E-mail">
-					 	 <input name="FieldName7" type="hidden" value="DedicationNotifyEmail"/>
+					 	 <input type="text" class="form-control" name="FieldValue7" id="FieldValue7" placeholder="Notification E-mail">
+					 	 <input name="FieldName7" type="hidden" value="Dedication_Notify_Email__c"/>
 						</div>
 					</div>
 			    </div>
@@ -278,49 +279,49 @@ require_once('inc/config.inc');
 			    <div style="display:none;" id="DedicationLetter">
 					  <div class="form-group">
 						<div class="col-sm-8">
-						  <input type="text" placeholder="Address Line 1" class="form-control" name="FieldName8" id="FieldName8">
-						  <input name="FieldName8" type="hidden" value="DedicationNotifyAddress1"/>
+						  <input type="text" placeholder="Address Line 1" class="form-control" name="FieldValue8" id="FieldValue8">
+						  <input name="FieldName8" type="hidden" value="Dedication_Notify_Address_1__c"/>
 						</div>
 					  </div>
 
 
 					  <div class="form-group">
 						<div class="col-sm-8">
-						  <input type="text" placeholder="Address Line 2" class="form-control" name="FieldName9" id="FieldName9">
-						   <input name="FieldName9" type="hidden" value="DedicationNotifyAddress2"/>
+						  <input type="text" placeholder="Address Line 2" class="form-control" name="FieldValue9" id="FieldValue9">
+						   <input name="FieldName9" type="hidden" value="Dedication_Notify_Address_2__c"/>
 						</div>
 					  </div>
 
 
 					  <div class="form-group">
 						<div class="col-sm-8">
-						  <input type="text" placeholder="City" class="form-control" name="FieldName11" id="FieldName11">
-						   <input name="FieldName11" type="hidden" value="DedicationNotifyAddress2"/>
+						  <input type="text" placeholder="City" class="form-control" name="FieldValue11" id="FieldValue11">
+						   <input name="FieldName11" type="hidden" value="Dedication_Notify_City__c"/>
 						</div>
 					  </div>
 
 
 					  <div class="form-group">
 						<div class="col-sm-4 selectContainer">
-						  <select size="1" id="FieldName12" name="FieldName12"  class="form-control">
+						  <select size="1" id="FieldValue12" name="FieldValue12"  class="form-control">
 			      		  <?php include 'inc/_US_States.html'; ?>
 			              </select>
-			              <input name="FieldName12" type="hidden" value="DedicationNotifyState"/>
+			              <input name="FieldName12" type="hidden" value="Dedication_Notify_State__c"/>
 						</div>
 
 						<div class="col-sm-4">
-						  <input type="text" placeholder="Post Code" class="form-control" name="FieldName14" id="FieldName14">
-						  <input name="FieldName14" type="hidden" value="DedicationNotifyZip"/>
+						  <input type="text" placeholder="Post Code" class="form-control" name="FieldValue14" id="FieldValue14">
+						  <input name="FieldName14" type="hidden" value="Dedication_Notify_Zip__c"/>
 						</div>
 					  </div>
 
 
 					  <div class="form-group">
 						<div class="col-sm-8 selectContainer">
-						  <select name="FieldName13" size="1" id="FieldName13"  class="form-control">
-			    		  <?php include 'inc/_Country_Codes.html'; ?>
+						  <select name="FieldValue13" size="1" id="FieldValue13"  class="form-control">
+			    		  <?php include 'inc/_Country_Names.html'; ?>
 			      		  </Select>
-			      		  <input name="FieldName13" type="hidden" value="DedicationNotifyCountry"/>
+			      		  <input name="FieldName13" type="hidden" value="Dedication_Notify_Country__c"/>
 						</div>
 					  </div>
 			    
@@ -329,8 +330,8 @@ require_once('inc/config.inc');
 			    <div style="display:none;" id="DedicationMessage">
 					<div class="form-group">
 						<div class="col-sm-8">
-							<textarea rows="3" class="form-control" placeholder="Dedication Message" name="FieldName15" id="FieldName15"></textarea>
-							<input name="FieldName15" type="hidden" value="DedicationNotifyMessage"/>
+							<textarea rows="3" class="form-control" placeholder="Dedication Message" name="FieldValue15" id="FieldValue15"></textarea>
+							<input name="FieldName15" type="hidden" value="Dedication_Notify_Message__c"/>
 						</div>
 					</div>
 	  			</div>
@@ -375,23 +376,23 @@ require_once('inc/config.inc');
     $('input, textarea').placeholder();
  	 
  	 // dedication checkbox
-     $('#FieldName6').change(function(){
+     $('#FieldValue6').change(function(){
 
-        if($('#FieldName6').val() == 'email') {
+        if($('#FieldValue6').val() == 'Email') {
             $('#DedicationEmail').show();
             $('#DedicationMessage').show();  
         } else {
             $('#DedicationEmail').hide(); 
         } 
         
-        if($('#FieldName6').val() == 'letter') {
+        if($('#FieldValue6').val() == 'Letter') {
             $('#DedicationLetter').show(); 
             $('#DedicationMessage').show(); 
         } else {
             $('#DedicationLetter').hide(); 
         } 
         
-        if($('#FieldName6').val() == 'none') {
+        if($('#FieldValue6').val() == 'None') {
             $('#DedicationEmail').hide(); 
             $('#DedicationLetter').hide(); 
             $('#DedicationMessage').hide(); 
@@ -431,7 +432,7 @@ require_once('inc/config.inc');
 		        var value = $field.val();
 		        
 		         if (value === '') {
-		        	 if($("input[name='FieldName2']:checked").val() == 1) {
+		        	 if($("input[name='FieldValue2']:checked").val() == 1) {
 	 					return {
 		              	  valid: false,
 		              	  message: 'The company name is required'
@@ -446,7 +447,7 @@ require_once('inc/config.inc');
 		        var value = $field.val();
 		        
 		         if (value === '') {
-		        	 if($("input[name='FieldName3']:checked").val() == 1) {
+		        	 if($("input[name='FieldValue3']:checked").val() == 1) {
 	 					return {
 		              	  valid: false,
 		              	  message: 'The name is required'
@@ -461,7 +462,7 @@ require_once('inc/config.inc');
 		        var value = $field.val();
 		        
 		         if (value === '') {
-		        	 if($('#FieldName6').val() == 'email') {
+		        	 if($('#FieldValue6').val() == 'email') {
 	 					return {
 		              	  valid: false,
 		              	  message: 'The email is required'
@@ -477,7 +478,7 @@ require_once('inc/config.inc');
 		        var value = $field.val();
 		        
 		         if (value === '') {
-		        	 if($('#FieldName6').val() == 'letter') {
+		        	 if($('#FieldValue6').val() == 'letter') {
 	 					return {
 		              	  valid: false,
 		              	  message: 'The address is required'
@@ -596,7 +597,7 @@ require_once('inc/config.inc');
 		                }
 		            }
 		        },
-		        FieldName1: {
+		        FieldValue1: {
 		            message: 'The company name is invalid',
 		            validators: {
 		                companymatch: {
@@ -604,7 +605,7 @@ require_once('inc/config.inc');
 		                }
 		            }
 		        },
-		        FieldName5: {
+		        FieldValue5: {
 		            message: 'The name is invalid',
 		            validators: {
 		                namenotify: {
@@ -612,7 +613,7 @@ require_once('inc/config.inc');
 		                }
 		            }
 		        },
-		        FieldName7: {
+		        FieldValue7: {
 		            message: 'The email is required is invalid',
 		            validators: {
 		                emailnotify: {
@@ -620,7 +621,7 @@ require_once('inc/config.inc');
 		                }
 		            }
 		        },
-		        FieldName8: {
+		        FieldValue8: {
 		            message: 'The address is required is invalid',
 		            validators: {
 		                letternotify: {
