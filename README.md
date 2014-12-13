@@ -24,3 +24,5 @@ if (!defined('CNP_DECIMAL_MARK')) define('CNP_DECIMAL_MARK', 'US');
 - See http://manual.clickandpledge.com/Form-as-a-Service.html for help and samples
 - See http://manual.clickandpledge.com/Form-Field-Names.html for full list of config options
 - See http://forums.clickandpledge.com/content.php?r=248-Run-a-Test-Transaction for how to set up in test mode
+
+*Made in Oakland*
