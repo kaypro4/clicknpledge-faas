@@ -18,6 +18,8 @@ if (!defined('CNP_SEND_RECEIPT')) define('CNP_SEND_RECEIPT', 'false');  //true o
 if (!defined('CNP_ORDER_MODE')) define('CNP_ORDER_MODE', 'Test'); //Production or Test
 if (!defined('CNP_TRANSACTION_TYPE')) define('CNP_TRANSACTION_TYPE', 'Payment');
 if (!defined('CNP_DECIMAL_MARK')) define('CNP_DECIMAL_MARK', 'US');
+if (!defined('ERROR_EMAIL_TO')) define('ERROR_EMAIL_TO', 'XX@XX.com');
+if (!defined('ERROR_EMAIL_SUBJECT')) define('ERROR_EMAIL_SUBJECT', 'Donation Page Error');
 ?>
 ```
 
