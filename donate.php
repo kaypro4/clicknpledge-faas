@@ -431,10 +431,42 @@ require_once('inc/config.inc');
 
 	function showPanel(pObj,toshow)
 	{
-	if (pObj.checked)
-		document.getElementById(toshow).style.display = "inline";
-	else 
-		document.getElementById(toshow).style.display = "none";
+		if (pObj.checked) {
+			document.getElementById(toshow).style.display = "inline";
+			console.log("show")	
+			$('.donateForm').data('bootstrapValidator')
+			.resetField('FieldValue1')
+    		.updateStatus('FieldValue1', 'NOT_VALIDATED')
+    		.resetField('FieldValue5')
+    		.updateStatus('FieldValue5', 'NOT_VALIDATED')
+    		.resetField('FieldValue7')
+    		.updateStatus('FieldValue7', 'NOT_VALIDATED')
+    		.resetField('FieldValue8')
+    		.updateStatus('FieldValue8', 'NOT_VALIDATED')
+    		.disableSubmitButtons(false);
+		}else {
+			document.getElementById(toshow).style.display = "none";
+			
+			console.log("hide")
+			//this could be improved....
+			//It's intended to enable the submit button in the following situation:
+			//1. Person exposes the fields and fills out
+			//2. Clears out the field (submit button disables)
+			//3. Person clicks the checkbox to not fill out that section
+			//I just needed a way to get the submit button back.  May have implications on future validations.
+			//Look here for more ideas:http://bootstrapvalidator.com/api/#reset-field
+			$('.donateForm').data('bootstrapValidator')
+			.resetField('FieldValue1')
+    		.updateStatus('FieldValue1', 'VALID')
+    		.resetField('FieldValue5')
+    		.updateStatus('FieldValue5', 'VALID')
+    		.resetField('FieldValue7')
+    		.updateStatus('FieldValue7', 'VALID')
+    		.resetField('FieldValue8')
+    		.updateStatus('FieldValue8', 'VALID')
+    		.disableSubmitButtons(false);
+    		
+		}
 	}
 	
 	
@@ -508,6 +540,9 @@ require_once('inc/config.inc');
 		        return true;
 		    }
 		};
+	
+	
+
 	
 		$('.donateForm').bootstrapValidator({
 		    feedbackIcons: {
