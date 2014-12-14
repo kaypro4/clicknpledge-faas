@@ -29,11 +29,10 @@ require_once('inc/config.inc');
 	<title>Donate</title>
 	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/css/bootstrapValidator.min.css"/>
-
 </head>
-<body>
+<body style="margin: 0; padding: 0;">
 
-<div class="container">
+<div class="container-fluid">
 	<div class="row clearfix">
 	
 	<form role="form" class="form-horizontal donateForm" id="Donation" name="Donation" method="post" action="https://faas.cloud.clickandpledge.com">
@@ -41,8 +40,8 @@ require_once('inc/config.inc');
 	 	<div class="col-xs-12 column">
 	 	<br /><br />
 		 	<div class="form-group">
-				<label class="col-md-1 control-label" for="amount">Amount</label>
-				<div class="col-md-2">  
+				<label class="col-xs-1 control-label" for="amount">Amount</label>
+				<div class="col-xs-3">  
 				<input id="UnitPrice1" name="UnitPrice1" type="text" placeholder="$" class="form-control input-md" value="<?php if(isset($_GET['test'])) {echo '1.00';}?>">
 		  		<input name="ItemID1" type="hidden" id="ItemID1" value="1" />
 		  		<input name="SKU1" type="hidden" id="SKU1" value="Donation" />
@@ -53,7 +52,7 @@ require_once('inc/config.inc');
 			</div>
 		
 			<div class="form-group">
-			<div class="col-md-11 col-md-offset-1">
+			<div class="col-xs-11 col-xs-offset-1">
 			    <label class="radio" for="Installment-0">
 			      <input type="radio" name="Installment" value="999" id="Installment" />
 			      <input name="Periodicity" type="hidden" id="Periodicity" value="month" />
@@ -71,68 +70,68 @@ require_once('inc/config.inc');
 	 	</div>
 	 	
 	 	
-	 	<div class="col-sm-6 column">
+	 	<div class="col-xs-6 column">
 	 	<!-- Left column Begin -->
 		  
 			<div class="form-group">
-				<div class="col-sm-8">
+				<div class="col-xs-10">
 				<input id="BillingFirstName" name="BillingFirstName" type="text" placeholder="First Name" class="form-control input-md" value="<?php if(isset($_GET['test'])) {echo 'Mark';}?>">
 				</div>
 			</div>
 
 			<div class="form-group">
-				<div class="col-sm-8">
+				<div class="col-xs-10">
 				<input id="BillingLastName" name="BillingLastName" type="text" placeholder="Last Name" class="form-control input-md" value="<?php if(isset($_GET['test'])) {echo 'Spits';}?>">	
 				</div>
 			</div>
 			 
 			<div class="form-group">
-				<div class="col-sm-8">
+				<div class="col-xs-10">
 				<input id="BillingPhone" name="BillingPhone" type="text" placeholder="Phone" class="form-control input-md" value="<?php if(isset($_GET['test'])) {echo '206-555-1212';}?>">
 				</div>
 			</div>
 			
 			 <div class="form-group">
-			    <div class="col-sm-8">
+			    <div class="col-xs-10">
 			      <input type="text" placeholder="E-mail" class="form-control" name="BillingEmail" id="BillingEmail" value="<?php if(isset($_GET['test'])) {echo 'i8flan@gmail.com';}?>">
 			    </div>
 			  </div>
 			
 			 <div class="form-group">
-			    <div class="col-sm-8">
+			    <div class="col-xs-10">
 			      <input type="text" placeholder="Address Line 1" class="form-control" name="BillingAddress1" id="BillingAddress1" value="<?php if(isset($_GET['test'])) {echo '555 Main St';}?>">
 			    </div>
 			  </div>
 
 
 			  <div class="form-group">
-			    <div class="col-sm-8">
+			    <div class="col-xs-10">
 			      <input type="text" placeholder="Address Line 2" class="form-control" name="BillingAddress2" id="BillingAddress2" value="<?php if(isset($_GET['test'])) {echo 'Apt C';}?>">
 			    </div>
 			  </div>
 
 
 			  <div class="form-group">
-			    <div class="col-sm-8">
+			    <div class="col-xs-10">
 			      <input type="text" placeholder="City" class="form-control" name="BillingCity" id="BillingCity" value="<?php if(isset($_GET['test'])) {echo 'Oakland';}?>">
 			    </div>
 			  </div>
 
 
 			  <div class="form-group">
-			    <div class="col-sm-4 selectContainer">
+			    <div class="col-xs-5 selectContainer">
 			      <select name="BillingStateProvince" size="1" id="BillingStateProvince"  class="form-control">
 			      <?php include 'inc/_US_States.html'; ?>
 			      </select>
 			    </div>
-			    <div class="col-sm-4">
+			    <div class="col-xs-5">
 			      <input type="text" placeholder="Post Code" class="form-control" name="BillingPostalCode" id="BillingPostalCode" value="<?php if(isset($_GET['test'])) {echo '98118';}?>">
 			    </div>
 			  </div>
 
 
 			  <div class="form-group">
-			    <div class="col-sm-8 selectContainer">
+			    <div class="col-xs-10 selectContainer">
 			      <select name="BillingCountryCode" size="1" id="BillingCountryCode"  class="form-control">
 			      <?php include 'inc/_Country_Codes.html'; ?>
 			      </Select>
@@ -140,7 +139,7 @@ require_once('inc/config.inc');
 			  </div>
 		  	
 			<div class="form-group">
-			    <div class="col-sm-8">
+			    <div class="col-xs-10">
 			      <textarea rows="4" class="form-control" placeholder="Comments" id="FieldValue10" name="FieldValue10"> <?php if(isset($_GET['test'])) {echo 'Sample comment';}?></textarea>
 			      <input name="FieldName10" type="hidden" value="Comments"/>
 			    </div>
@@ -150,25 +149,25 @@ require_once('inc/config.inc');
 		
 		<!-- Left column End -->
 		</div>
-	  	<div class="col-sm-6 column">
+	  	<div class="col-xs-6 column">
 	  	<!-- Right column Begin -->
 	  	
 		  		
 		  	  <div class="form-group">
-			    <div class="col-sm-8">
+			    <div class="col-xs-10">
 			      <input type="text" placeholder="Name on Card" class="form-control" name="NameOnCard" id="NameOnCard" value="<?php if(isset($_GET['test'])) {echo 'Mark Spits';}?>">
 			    </div>
 			  </div>
 		  		
 		  	    <div class="form-group">
-				<div class="col-sm-8">
+				<div class="col-xs-10">
 				  <input type="text" class="form-control" name="CardNumber" id="CardNumber" placeholder="Card Number" value="<?php if(isset($_GET['test'])) {echo '4111111111111111';}?>">
 				</div>
 			      </div>
 			      
 			      <div class="form-group">
 				  
-				    <div class="col-sm-4 selectContainer">
+				    <div class="col-xs-5 selectContainer">
 				    <select class="form-control" name="ExpirationMonth" id="ExpirationMonth">
 					<option value="">Month</option>
 					<option value="01">Jan (01)</option>
@@ -185,7 +184,7 @@ require_once('inc/config.inc');
 					<option value="12" <?php if(isset($_GET['test'])) {echo 'selected';}?>>Dec (12)</option>
 				    </select>
 				    </div>
-				    <div class="col-sm-4">
+				    <div class="col-xs-5">
 
 				      <select class="form-control" name="ExpirationYear" id="ExpirationYear">
 					<?PHP
@@ -205,7 +204,7 @@ require_once('inc/config.inc');
 			      </div>
 			      
 			      <div class="form-group">
-					<div class="col-sm-4">
+					<div class="col-xs-5">
 					  <input type="text" class="form-control" name="Cvv2" id="Cvv2" placeholder="CCV" value="<?php if(isset($_GET['test'])) {echo '123';}?>">
 					</div>
 			      </div>
@@ -218,7 +217,7 @@ require_once('inc/config.inc');
 			</div>
 		  	
 		  	<div class="form-group" style="display:none;" id="Match">
-				<div class="col-sm-8">
+				<div class="col-xs-10">
 			 	 <input type="text" class="form-control" name="FieldValue1" id="FieldValue1" placeholder="Employer name">
 			 	 <input name="FieldName1" type="hidden" value="Employer__c"/>
 				</div>
@@ -232,7 +231,7 @@ require_once('inc/config.inc');
 		  	<div style="display:none;" id="Dedication">
 		  	
 			  	<div class="form-group">
-				<div class="col-md-11 col-md-offset-1">
+				<div class="col-xs-11 col-xs-offset-1">
 				    <label class="radio" for="radios-0">
 				      <input type="radio" name="FieldValue4" id="FieldName4-0" value="Honor" checked="checked">
 				      In honor of...
@@ -247,7 +246,7 @@ require_once('inc/config.inc');
 				</div>
 			  	
 			  	<div class="form-group">
-					<div class="col-sm-8">
+					<div class="col-xs-10">
 				 	 <input type="text" class="form-control" name="FieldValue5" id="FieldValue5" placeholder="Name">
 				 	 <input name="FieldName5" type="hidden" value="Dedication_Name__c"/>
 					</div>
@@ -255,7 +254,7 @@ require_once('inc/config.inc');
 				
 				<div class="form-group">
 				  
-				    <div class="col-sm-8">
+				    <div class="col-xs-10">
 				    <select class="form-control" name="FieldValue6" id="FieldValue6">
 					<option value="None" name="None">Notify by</option>
 					<option value="None" name="None">Do not notify</option>
@@ -269,7 +268,7 @@ require_once('inc/config.inc');
 			    
 			    <div style="display:none;" id="DedicationEmail">
 					<div class="form-group">
-						<div class="col-sm-8">
+						<div class="col-xs-10">
 					 	 <input type="text" class="form-control" name="FieldValue7" id="FieldValue7" placeholder="Notification E-mail">
 					 	 <input name="FieldName7" type="hidden" value="Dedication_Notify_Email__c"/>
 						</div>
@@ -278,7 +277,7 @@ require_once('inc/config.inc');
 			    
 			    <div style="display:none;" id="DedicationLetter">
 					  <div class="form-group">
-						<div class="col-sm-8">
+						<div class="col-xs-10">
 						  <input type="text" placeholder="Address Line 1" class="form-control" name="FieldValue8" id="FieldValue8">
 						  <input name="FieldName8" type="hidden" value="Dedication_Notify_Address_1__c"/>
 						</div>
@@ -286,7 +285,7 @@ require_once('inc/config.inc');
 
 
 					  <div class="form-group">
-						<div class="col-sm-8">
+						<div class="col-xs-10">
 						  <input type="text" placeholder="Address Line 2" class="form-control" name="FieldValue9" id="FieldValue9">
 						   <input name="FieldName9" type="hidden" value="Dedication_Notify_Address_2__c"/>
 						</div>
@@ -294,7 +293,7 @@ require_once('inc/config.inc');
 
 
 					  <div class="form-group">
-						<div class="col-sm-8">
+						<div class="col-xs-10">
 						  <input type="text" placeholder="City" class="form-control" name="FieldValue11" id="FieldValue11">
 						   <input name="FieldName11" type="hidden" value="Dedication_Notify_City__c"/>
 						</div>
@@ -302,14 +301,14 @@ require_once('inc/config.inc');
 
 
 					  <div class="form-group">
-						<div class="col-sm-4 selectContainer">
+						<div class="col-xs-5 selectContainer">
 						  <select size="1" id="FieldValue12" name="FieldValue12"  class="form-control">
 			      		  <?php include 'inc/_US_States.html'; ?>
 			              </select>
 			              <input name="FieldName12" type="hidden" value="Dedication_Notify_State__c"/>
 						</div>
 
-						<div class="col-sm-4">
+						<div class="col-xs-5">
 						  <input type="text" placeholder="Post Code" class="form-control" name="FieldValue14" id="FieldValue14">
 						  <input name="FieldName14" type="hidden" value="Dedication_Notify_Zip__c"/>
 						</div>
@@ -317,7 +316,7 @@ require_once('inc/config.inc');
 
 
 					  <div class="form-group">
-						<div class="col-sm-8 selectContainer">
+						<div class="col-xs-10 selectContainer">
 						  <select name="FieldValue13" size="1" id="FieldValue13"  class="form-control">
 			    		  <?php include 'inc/_Country_Names.html'; ?>
 			      		  </Select>
@@ -329,7 +328,7 @@ require_once('inc/config.inc');
 			    </div>
 			    <div style="display:none;" id="DedicationMessage">
 					<div class="form-group">
-						<div class="col-sm-8">
+						<div class="col-xs-10">
 							<textarea rows="3" class="form-control" placeholder="Dedication Message" name="FieldValue15" id="FieldValue15"></textarea>
 							<input name="FieldName15" type="hidden" value="Dedication_Notify_Message__c"/>
 						</div>
@@ -338,17 +337,19 @@ require_once('inc/config.inc');
 	  			
 	  		</div>
 	  		
+	  		
+	  		
 	  	<!-- Right column End -->
 		</div>
 		
-		<div class="col-md-12 column">
+		<div class="col-xs-12 column">
 			<button type="submit" name="donate" class="btn btn-primary">Submit</button>
 		</div>
 		
 		<input type="hidden" name="OnSuccessUrl" id="OnSuccessUrl" 	value="<?php echo ON_SUCCESS_URL ?>" />
 		<input type="hidden" name="OnDeclineUrl" id="OnDeclineUrl" 	value="<?php echo ON_DECLINE_URL ?>" />
 		<input type="hidden" name="OnErrorUrl" id="OnErrorUrl" 		value="<?php echo ON_ERROR_URL ?>" />
-		<input type="hidden" name="Campaign" id="Campaign" value="<?php if(isset($_GET['campaign'])) {echo $_GET['campaign'];}else{echo DEFAULT_SF_CAMPAIGN;}?>" />
+		<input type="hidden" name="Campaign" id="Campaign" value="<?php if(isset($_GET['campaign'])) {echo $_GET['campaign'];}else{echo DEFAULT_SF_CAMPAIGN;} //also see that we can override this in JS if this page is in an iframe.?>" />
 
 		<input type="hidden" name="AccountGuid" id="AccountGuid" value="<?php echo CNP_ACCOUNT_GUID ?>" />
 		<input type="hidden" name="AccountID" id="AccountID" value="<?php echo CNP_ACCOUNT_ID ?>" />
@@ -371,6 +372,18 @@ require_once('inc/config.inc');
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
     <script src="js/jquery.placeholder.js"></script>
     <script type="text/javascript">
+	 //get the querystring variables from the parent page if we're in an iframe so that we can use them.
+	 function getQueryString() {
+        var queryStringKeyValue = window.parent.location.search.replace('?', '').split('&');
+        var qsJsonObject = {};
+        if (queryStringKeyValue != '') {
+            for (i = 0; i < queryStringKeyValue.length; i++) {
+                qsJsonObject[queryStringKeyValue[i].split('=')[0]] = queryStringKeyValue[i].split('=')[1];
+            }
+        }
+        return qsJsonObject;
+    }
+   
    $(function() {
     // Invoke the placeholder plugin to make placeholders work in old browsers
     $('input, textarea').placeholder();
@@ -427,6 +440,13 @@ require_once('inc/config.inc');
 	
 	
 	$(document).ready(function() {
+	
+		//if we're in an iframe, and the parent URL has a campaign value in it, then update our campaign field
+		var campaign = getQueryString().campaign;
+    	if (campaign != undefined){
+    		$("#Campaign").val (decodeURIComponent(campaign));	
+    	}
+	
 		$.fn.bootstrapValidator.validators.companymatch = {
 		    validate: function(validator, $field, options) {
 		        var value = $field.val();

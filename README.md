@@ -25,4 +25,18 @@ if (!defined('CNP_DECIMAL_MARK')) define('CNP_DECIMAL_MARK', 'US');
 - See http://manual.clickandpledge.com/Form-Field-Names.html for full list of config options
 - See http://forums.clickandpledge.com/content.php?r=248-Run-a-Test-Transaction for how to set up in test mode
 
+##Embedding in an iframe
+These pages can easily be embedded in another site using an iframe.  One thing that you may want to do is add this onload to the iframe so when the success/error/decline page is loaded in the forms place the parent page will scroll to the top: window.parent.parent.scrollTo(0,0)
+
+Here's a sample iframe:
+
+```
+<iframe src="https://mydomain.org/clickandpledge/donate.php?test=1" style="padding-left: 0px; padding-right:0px; width:100%; height:1200px;" scrolling="auto" onload="window.parent.parent.scrollTo(0,0)" id="donationform"></iframe>
+```
+There is also a bit of JavaScript in the donate.php page that grabs a campaign from the parent URL and loads it into the campaign field if it exists.  So if you want to use this, just add a ?campaign=XXX to the page that the donate.php page is iframed in.  Tested and works well in Wordpress 4.
+
+##Test mode
+Append ?test=1 to the donation form URL to get some defaulted field values to speed up testing. 
+
+
 *Made in Oakland*
