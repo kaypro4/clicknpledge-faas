@@ -1,4 +1,4 @@
-#Click & Pledge FAAS sample form
+#Click & Pledge FAAS sample form with Bootstrap and jQuery
 
 Sample page for accepting online donations using Click &amp; Pledge FAAS and Salesforce
 
