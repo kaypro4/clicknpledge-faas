@@ -21,10 +21,11 @@ if (!defined('CNP_DECIMAL_MARK')) define('CNP_DECIMAL_MARK', 'US');
 ?>
 ```
 
-##Uses
+##Works (as well as it does) thanks to
 - Bootstrap 3
 - jQuery
 - Bootstrap validator:  http://bootstrapvalidator.com/
+- jQuery Placeholder:  https://github.com/mathiasbynens/jquery-placeholder
 - Click & Pledge FAAS
 
 ##Where to find more information
