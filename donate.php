@@ -350,7 +350,7 @@ require_once('inc/config.inc');
 		<input type="hidden" name="OnDeclineUrl" id="OnDeclineUrl" 	value="<?php echo ON_DECLINE_URL ?>" />
 		<input type="hidden" name="OnErrorUrl" id="OnErrorUrl" 		value="<?php echo ON_ERROR_URL ?>" />
 		
-		<input type="text" class="hidden" name="FieldValue16" id="token" value="<?php if(isset($_GET['token'])) {echo $_GET['token'];} //also see that we can override this in JS if this page is in an iframe.?>">
+		<input type="hidden" name="FieldValue16" id="FieldValue16" value="<?php if(isset($_GET['token'])) {echo $_GET['token'];} //also see that we can override this in JS if this page is in an iframe.?>">
 		<input name="FieldName16" type="hidden" value="Token__c"/>
 		
 		<input type="hidden" name="Campaign" id="Campaign" value="<?php if(isset($_GET['campaign'])) {echo $_GET['campaign'];}else{echo DEFAULT_SF_CAMPAIGN;} //also see that we can override this in JS if this page is in an iframe.?>" />
@@ -387,6 +387,7 @@ require_once('inc/config.inc');
         }
         return qsJsonObject;
     }
+    
    
    $(function() {
     // Invoke the placeholder plugin to make placeholders work in old browsers
@@ -482,9 +483,11 @@ require_once('inc/config.inc');
     	if (campaign != undefined){
     		$("#Campaign").val (decodeURIComponent(campaign));	
     	}
+    	
 		var token = getQueryString().token;
     	if (token != undefined){
-    		$("#token").val (decodeURIComponent(token));	
+    		$("#FieldValue16").val (decodeURIComponent(token));	
+    		console.log(token)
     	}
     	
 		$.fn.bootstrapValidator.validators.companymatch = {
