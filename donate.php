@@ -349,6 +349,10 @@ require_once('inc/config.inc');
 		<input type="hidden" name="OnSuccessUrl" id="OnSuccessUrl" 	value="<?php echo ON_SUCCESS_URL ?>" />
 		<input type="hidden" name="OnDeclineUrl" id="OnDeclineUrl" 	value="<?php echo ON_DECLINE_URL ?>" />
 		<input type="hidden" name="OnErrorUrl" id="OnErrorUrl" 		value="<?php echo ON_ERROR_URL ?>" />
+		
+		<input type="text" class="hidden" name="FieldValue16" id="token" value="<?php if(isset($_GET['token'])) {echo $_GET['token'];} //also see that we can override this in JS if this page is in an iframe.?>">
+		<input name="FieldName16" type="hidden" value="Token__c"/>
+		
 		<input type="hidden" name="Campaign" id="Campaign" value="<?php if(isset($_GET['campaign'])) {echo $_GET['campaign'];}else{echo DEFAULT_SF_CAMPAIGN;} //also see that we can override this in JS if this page is in an iframe.?>" />
 
 		<input type="hidden" name="AccountGuid" id="AccountGuid" value="<?php echo CNP_ACCOUNT_GUID ?>" />
@@ -473,12 +477,16 @@ require_once('inc/config.inc');
 	
 	$(document).ready(function() {
 	
-		//if we're in an iframe, and the parent URL has a campaign value in it, then update our campaign field
+		//if we're in an iframe, and the parent URL has a campaign or token value in it, then update our campaign field
 		var campaign = getQueryString().campaign;
     	if (campaign != undefined){
     		$("#Campaign").val (decodeURIComponent(campaign));	
     	}
-	
+		var token = getQueryString().token;
+    	if (token != undefined){
+    		$("#token").val (decodeURIComponent(token));	
+    	}
+    	
 		$.fn.bootstrapValidator.validators.companymatch = {
 		    validate: function(validator, $field, options) {
 		        var value = $field.val();
