@@ -7,7 +7,7 @@ $('#introtext', window.parent.document).hide();
 </script>
 </head>
 <body onload="window.parent.parent.scrollTo(0,0)">
-Decline<br/><br/>
+Oops, your card was declined.  Please click your browser back button, review the information and resubmit.<br/><br/>
 <?php
  echo rawurldecode($_GET['on']);
 ?>
